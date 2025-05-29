@@ -2,9 +2,7 @@
 # Create a program that ask user for a question, it will also ask for 4 possible answer (a,b,c,d) and the correct answer. 
 # Write the collected data to a text file. Ask another question until the user chose to exit.
 
-class QuizReader:
-    print("-----WELCOME TO MY QUIZ CREATOR-----")
-
+class QuizCreator:
     def __init__(self):
         print("-----WELCOME TO MY QUIZ CREATOR-----")
         self.filename = self.file_name()
@@ -16,7 +14,7 @@ class QuizReader:
                 return txt_file
             print("please add a '.txt' extension!")
 
-    def quiz_creator(self, filename):
+    def quiz_creator(self):
         while True:
             question = input("Enter Question(enter e to exit): ")   # asks user for question
             
@@ -32,7 +30,7 @@ class QuizReader:
 
             correct_answer = input("letter of correct answer: ").upper()    # asks user for the correct answer
 
-            with open(filename, "a") as file:   # saves input to external text file
+            with open(self.filename, "a") as file:   # saves input to external text file
                 file.write(f"Question: {question}\n")
                 file.write(f"A: {choices[0]}\n")
                 file.write(f"B: {choices[1]}\n")
