@@ -5,9 +5,11 @@ colorama.init(autoreset=True)
 
 class QuizReader:
     def __init__(self):
-        pass
-    
-    def file_name():    # added needed functions first
+        self.filename = self.file_name()
+        self.questions = self.convert_quiz(self.filename)
+
+
+    def file_name(self):    # added needed functions first
         while True:
             try:     # asks for user file name to read
                 txt_file = input("file name with '.txt': ")
@@ -19,7 +21,7 @@ class QuizReader:
                 print("File not found")
         return txt_file
 
-    def convert_quiz(txt_file):
+    def convert_quiz(self, txt_file):
         with open(txt_file, "r") as file:
             content = file.read()
 
@@ -40,11 +42,11 @@ class QuizReader:
                 quiz_data.append(question_data)
         return quiz_data
 
-    def quiz(quiz_data):
+    def quiz(self):
         score_tracker = 0
         total_questions = 0
         while True:
-            current_question = random.choice(quiz_data)     # randomly chooses question until user exits program
+            current_question = random.choice(self.questions)     # randomly chooses question until user exits program
             # score tracker
             print("\nSCORE:")
             print(score_tracker)
