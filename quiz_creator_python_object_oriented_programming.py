@@ -6,7 +6,8 @@ class QuizReader:
     print("-----WELCOME TO MY QUIZ CREATOR-----")
 
     def __init__(self):
-        pass
+        print("-----WELCOME TO MY QUIZ CREATOR-----")
+        self.filename = self.file_name()
 
     def file_name(self):
         while True:     # asks for user file name
