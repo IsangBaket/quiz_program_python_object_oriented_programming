@@ -4,10 +4,9 @@ from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
 class QuizReader:
-    def __init__(self):
+    def __init__(self):     # constructor
         self.filename = self.file_name()
         self.questions = self.convert_quiz(self.filename)
-
 
     def file_name(self):    # added needed functions first
         while True:
@@ -73,11 +72,3 @@ class QuizReader:
         
         print(Back.LIGHTCYAN_EX +  Style.BRIGHT + f"\n🥳🥳🥳Congratulations! You got a score of {score_tracker} out of {total_questions}")
 
-    def main():
-        print(Style.BRIGHT + "----------START QUIZ----------")
-        txt_file = file_name()
-        quiz_data = convert_quiz(txt_file)
-        quiz(quiz_data)
-
-    if __name__ == "__main__":
-        main()
