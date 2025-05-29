@@ -2,42 +2,41 @@
 # Create a program that ask user for a question, it will also ask for 4 possible answer (a,b,c,d) and the correct answer. 
 # Write the collected data to a text file. Ask another question until the user chose to exit.
 
-print("-----WELCOME TO MY QUIZ CREATOR-----")
+class QuizReader:
+    print("-----WELCOME TO MY QUIZ CREATOR-----")
 
-def file_name():
-    while True:     # asks for user file name
-        txt_file = input("file name with '.txt': ")
-        if txt_file.endswith('.txt'):   # ensures that user puts file extension
-            break
-        print("please add a '.txt' extension!")
+    def __init__(self):
+        pass
 
-def quiz_creator():
-    while True:
-        question = input("Enter Question(enter e to exit): ")   # asks user for question
-        
-        if question == 'e':   # ends program 
-            break
+    def file_name(self):
+        while True:     # asks for user file name
+            txt_file = input("file name with '.txt': ")
+            if txt_file.endswith('.txt'):   # ensures that user puts file extension
+                return txt_file
+            print("please add a '.txt' extension!")
 
-        print("Input answers for A to D") 
+    def quiz_creator(self, filename):
+        while True:
+            question = input("Enter Question(enter e to exit): ")   # asks user for question
+            
+            if question == 'e':   # ends program 
+                break
 
-        choices = []
-        for items in ['A', 'B', 'C', 'D']:  # asks user for input for choices A to D
-            answers = input(f"Choices {items}: ")
-            choices.append(answers)
+            print("Input answers for A to D") 
 
-        correct_answer = input("letter of correct answer: ").upper()    # asks user for the correct answer
+            choices = []
+            for items in ['A', 'B', 'C', 'D']:  # asks user for input for choices A to D
+                answers = input(f"Choices {items}: ")
+                choices.append(answers)
 
-        with open(txt_file, "a") as file:   # saves input to external text file
-            file.write(f"Question: {question}\n")
-            file.write(f"A: {choices[0]}\n")
-            file.write(f"B: {choices[1]}\n")
-            file.write(f"C: {choices[2]}\n")
-            file.write(f"D: {choices[3]}\n")
-            file.write(f"Correct Answer: {correct_answer}\n")
-            file.write('------\n\n')
+            correct_answer = input("letter of correct answer: ").upper()    # asks user for the correct answer
 
-def main():
-    filename = file_name()
-    quiz_creator(filename)
+            with open(filename, "a") as file:   # saves input to external text file
+                file.write(f"Question: {question}\n")
+                file.write(f"A: {choices[0]}\n")
+                file.write(f"B: {choices[1]}\n")
+                file.write(f"C: {choices[2]}\n")
+                file.write(f"D: {choices[3]}\n")
+                file.write(f"Correct Answer: {correct_answer}\n")
+                file.write('------\n\n')
 
-main()
